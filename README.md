@@ -1,138 +1,106 @@
-🤖 ERP AI Assistant — LangChain4j + Spring Boot
+```markdown
+# 🤖 ERP AI Assistant — LangChain4j + Spring Boot
 
-Assistente inteligente integrado a um cenário corporativo de ERP, desenvolvido com Java + Spring Boot + LangChain4j, focado em:
+Este projeto apresenta um assistente inteligente de alta performance integrado ao domínio de um ERP corporativo. A solução demonstra a transição de um simples "chat com LLM" para uma **Arquitetura de Agentes** robusta, segura e contextualizada com regras de negócio.
 
-IA Generativa aplicada ao negócio
+> **Status do Projeto:** 🚀 Protótipo Funcional (Foco em IA Generativa para Negócios)
 
-Arquitetura de Agente (não é só “chat com LLM”)
+---
 
-RAG (Retrieval Augmented Generation)
+### 🎯 Objetivo do Projeto
 
-Streaming de respostas em tempo real
+O foco principal é tirar a IA do modelo genérico e trazê-la para o centro da operação. O assistente não apenas "conversa", mas entende o domínio do sistema e age como um componente ativo da arquitetura técnica.
 
-Cache de respostas para performance
+* **Domínio Corporativo:** Respostas baseadas em regras de negócio reais (ex: Financeiro, Faturamento).
+* **Segurança de Contexto:** Uso de RAG para evitar alucinações.
+* **Experiência de Usuário:** Respostas fluidas via Streaming (SSE) e baixa latência com cache.
 
-🎯 Objetivo do Projeto
+---
 
-Criar um Agente de IA corporativo capaz de responder perguntas sobre regras de negócio de um ERP, utilizando:
+### 🧠 Arquitetura do Agente
 
-Base de conhecimento
+A arquitetura foi desenhada para garantir separação de responsabilidades e extensibilidade:
 
-Contexto semântico (embeddings)
+```mermaid
+graph TD
+    A[Cliente: Postman/Front-end] --> B[AssistantController: REST API]
+    B --> C[AssistantOrchestrator: Cérebro do Agente]
+    C --> D[ErpAssistantAgent: Interface da IA]
+    D --> E[Ferramentas de Negócio: Tool Calling]
+    D --> F[RAG: Contexto + Embeddings]
+    D --> G[Cache Service: Performance]
+    D --> H[Streaming de Tokens: SSE]
 
-Orquestração de ferramentas
+```
 
-Respostas rápidas e naturais
+---
 
-A proposta é sair do modelo:
+### 🚀 Tecnologias Utilizadas
 
-“Pergunte qualquer coisa para o GPT”
+| Tecnologia | Função |
+| --- | --- |
+| **Java 17+** | Linguagem base para robustez e escalabilidade |
+| **Spring Boot 3** | Backend, Injeção de Dependência e Gestão de APIs |
+| **LangChain4j** | Orquestração de LLMs e Agentes de IA |
+| **OpenAI API** | Modelos de linguagem (GPT-4o) e Embeddings |
+| **Vector Store** | Armazenamento de vetores para busca semântica (RAG) |
+| **SSE (Server-Sent Events)** | Entrega de tokens em tempo real (Streaming) |
+| **Caffeine/Redis** | Cache de respostas para redução de latência e custo |
 
-E entrar no modelo:
+---
 
-IA que entende o domínio do sistema e age como parte da arquitetura
+### 🔥 Funcionalidades Implementadas
 
-🧠 Arquitetura do Agente
+* [x] **Agent Orchestration:** Gerenciamento de memória e fluxo de conversação.
+* [x] **RAG (Retrieval Augmented Generation):** Consulta a manuais e regras do ERP antes de responder.
+* [x] **Function/Tool Calling:** Capacidade da IA de decidir e executar métodos Java (ex: consultar saldo de títulos).
+* [x] **Streaming UI-Ready:** Implementação de SSE para uma interface responsiva.
+* [x] **Context Isolation:** IA treinada para responder apenas dentro do escopo do ERP.
 
-Cliente (Postman / Front-end)
-↓
-AssistantController (REST API)
-↓
-AssistantOrchestrator (Cérebro do agente)
-↓
-ErpAssistantAgent (Interface da IA)
-↓
-Ferramentas de negócio (Tools)
-↓
-RAG (Contexto + Embeddings)
-↓
-Cache de respostas
-↓
-Streaming de tokens em tempo real
+---
 
-🚀 Tecnologias Utilizadas
-Tecnologia	Função
-Java 17+	Linguagem principal
-Spring Boot	Backend e API REST
-LangChain4j	Framework de agentes de IA
-OpenAI API	Modelos de linguagem e embeddings
-RAG	Contexto baseado em conhecimento
-SSE (Server-Sent Events)	Streaming de resposta
-Cache Service	Otimização de performance
-🔥 Funcionalidades Implementadas
+### 📂 Estrutura do Projeto
 
-Agente de IA com arquitetura real
+```text
+├── 📦 application
+│   ├── AssistantOrchestrator.java  # Orquestra a lógica entre usuário e IA
+│   ├── ErpAssistantAgent.java      # Definição do Agente e System Prompt
+│   └── ErpBusinessTools.java       # "Ferramentas" que a IA pode invocar
+├── 📦 config
+│   ├── AssistantConfig.java        # Bean central do LangChain4j
+│   ├── ChatModelConfig.java        # Configuração do LLM (Temperature, ModelId)
+│   └── EmbeddingConfig.java        # Setup do RAG e Vector Database
+└── 📦 web
+    └── AssistantController.java    # Endpoints REST e streaming
 
-RAG com base de conhecimento
+```
 
-Orquestração de ferramentas de negócio
+---
 
-Streaming de resposta em tempo real
+### 📈 Diferenciais Técnicos e Visão de Valor
 
-Cache de respostas
+Este projeto demonstra competências de **Especialista em Java e IA**, focando em problemas reais de grandes sistemas:
 
-🌍 Interface do Agente
-Pergunta normal
+1. **Modernização de Sistemas Legados:** Demonstra como envolver um ERP tradicional (como um sistema em Delphi ou Java legatário) com uma camada de inteligência moderna sem reescrever o core business.
+2. **Redução de Custos de Suporte:** O uso de RAG permite que o assistente resolva dúvidas de usuários finais que hoje sobrecarregam o suporte técnico.
+3. **Arquitetura Híbrida:** Integração entre lógica determinística (Java/Tools) e lógica probabilística (LLM), garantindo que operações críticas (como cálculos) sejam feitas pelo código Java e não pela IA.
 
-POST /api/assistant
+---
 
-{
-  "systemCode": "FIN",
-  "functionalityCode": "AP",
-  "question": "Se um título vencer hoje, quando começam os juros?"
-}
+### ⚙️ Como rodar o projeto
 
-Pergunta com Streaming
-
-POST /api/assistant/stream
-
-Retorno é enviado token por token em tempo real via SSE.
-
-⚙️ Configuração
-
-No application.properties:
-
+1. Clone o repositório.
+2. Configure suas variáveis no `application.properties`:
+```properties
 openai.api.key=SUA_CHAVE_AQUI
 openai.model=gpt-4o-mini
-openai.embedding.model=text-embedding-3-small
 
-📂 Estrutura do Projeto
-application
- AssistantOrchestrator.java   → Cérebro do agente
- ErpAssistantAgent.java       → Interface da IA
- ErpBusinessTools.java        → Ferramentas de negócio
+```
 
-config
- AssistantConfig.java
- ChatModelConfig.java
- EmbeddingConfig.java
- CacheConfig.java
 
-web
- AssistantController.java     → Endpoints REST
+3. Compile e rode:
+```bash
+mvn clean install
+mvn spring-boot:run
 
-🧩 Conceitos de IA Aplicados
-
-Agent Orchestration
-
-RAG (Retrieval Augmented Generation)
-
-Tool Calling
-
-Embeddings
-
-Streaming de LLM
-
-Cache para redução de custo e latência
-
-📈 Resultado
-
-Respostas alinhadas às regras do ERP, com:
-
-Menor latência
-
-Melhor experiência do usuário
-
-Redução de chamadas repetidas ao modelo
-
-Se quiser, no próximo passo eu deixo isso ainda mais forte pra recrutador (com seção "Diferenciais Técnicos" e "O que esse projeto demonstra sobre mim como desenvolvedor").
+```
