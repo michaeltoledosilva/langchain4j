@@ -2,84 +2,79 @@
 
 Assistente inteligente integrado a um cenário corporativo de ERP, desenvolvido com Java + Spring Boot + LangChain4j, focado em:
 
-✅ IA Generativa aplicada a negócio
+IA Generativa aplicada ao negócio
 
-✅ Arquitetura de Agente de IA (não é só “chat com LLM”)
+Arquitetura de Agente (não é só “chat com LLM”)
 
-✅ RAG (Retrieval Augmented Generation)
+RAG (Retrieval Augmented Generation)
 
-✅ Streaming de respostas (tempo real)
+Streaming de respostas em tempo real
 
-✅ Cache de respostas (performance)
+Cache de respostas para performance
 
 🎯 Objetivo do Projeto
 
 Criar um Agente de IA corporativo capaz de responder perguntas sobre regras de negócio de um ERP, utilizando:
 
-📚 Base de conhecimento
+Base de conhecimento
 
-🧠 Contexto semântico (embeddings)
+Contexto semântico (embeddings)
 
-🧩 Orquestração de ferramentas (tools)
+Orquestração de ferramentas
 
-⚡ Respostas rápidas e naturais
+Respostas rápidas e naturais
 
-A proposta é sair do modelo de:
+A proposta é sair do modelo:
 
 “Pergunte qualquer coisa para o GPT”
 
-E entrar no modelo de:
+E entrar no modelo:
 
 IA que entende o domínio do sistema e age como parte da arquitetura
 
 🧠 Arquitetura do Agente
-Cliente (Postman / Front)
-        ↓
+
+Cliente (Postman / Front-end)
+↓
 AssistantController (REST API)
-        ↓
-AssistantOrchestrator  ← Cérebro do Agente
-        ↓
-RAG Context (Embeddings + Knowledge Base)
-        ↓
-Ferramentas de Negócio (Tools)
-        ↓
-Cache de Respostas
-        ↓
-Streaming de Tokens (tempo real)
+↓
+AssistantOrchestrator (Cérebro do agente)
+↓
+ErpAssistantAgent (Interface da IA)
+↓
+Ferramentas de negócio (Tools)
+↓
+RAG (Contexto + Embeddings)
+↓
+Cache de respostas
+↓
+Streaming de tokens em tempo real
 
 🚀 Tecnologias Utilizadas
 Tecnologia	Função
 Java 17+	Linguagem principal
 Spring Boot	Backend e API REST
-LangChain4j	Framework para agentes de IA
+LangChain4j	Framework de agentes de IA
 OpenAI API	Modelos de linguagem e embeddings
-RAG	Respostas baseadas em conhecimento
+RAG	Contexto baseado em conhecimento
 SSE (Server-Sent Events)	Streaming de resposta
 Cache Service	Otimização de performance
-🧩 Funcionalidades Implementadas
+🔥 Funcionalidades Implementadas
 
-🤖 Agente de IA com contexto de ERP
+Agente de IA com arquitetura real
 
-📚 RAG com base de conhecimento
+RAG com base de conhecimento
 
-⚡ Streaming de respostas em tempo real
+Orquestração de ferramentas de negócio
 
-🚀 Cache de respostas para ganho de performance
+Streaming de resposta em tempo real
 
-🧠 Embeddings para busca semântica
+Cache de respostas
 
-🔧 Arquitetura preparada para Tools de negócio
-
-🌐 Interface do Agente
-
-Resultado: respostas alinhadas às regras do ERP.
-
-🔌 Endpoints da API
-📌 Pergunta Normal
+🌍 Interface do Agente
+Pergunta normal
 
 POST /api/assistant
-
-Body
 
 {
   "systemCode": "FIN",
@@ -87,11 +82,11 @@ Body
   "question": "Se um título vencer hoje, quando começam os juros?"
 }
 
-⚡ Pergunta com Streaming
+Pergunta com Streaming
 
 POST /api/assistant/stream
 
-Retorno palavra por palavra via Server-Sent Events.
+Retorno é enviado token por token em tempo real via SSE.
 
 ⚙️ Configuração
 
@@ -101,44 +96,43 @@ openai.api.key=SUA_CHAVE_AQUI
 openai.model=gpt-4o-mini
 openai.embedding.model=text-embedding-3-small
 
-🏗 Estrutura do Projeto
+📂 Estrutura do Projeto
 application
- ├── AssistantOrchestrator.java   → Cérebro do agente
- ├── ErpAssistantAgent.java       → Interface da IA
- ├── ErpBusinessTools.java        → Tools de negócio
+ AssistantOrchestrator.java   → Cérebro do agente
+ ErpAssistantAgent.java       → Interface da IA
+ ErpBusinessTools.java        → Ferramentas de negócio
 
 config
- ├── AssistantConfig.java
- ├── ChatModelConfig.java
- ├── EmbeddingConfig.java
- ├── CacheConfig.java
+ AssistantConfig.java
+ ChatModelConfig.java
+ EmbeddingConfig.java
+ CacheConfig.java
 
 web
- └── AssistantController.java
+ AssistantController.java     → Endpoints REST
 
-💡 Conceitos de IA Aplicados
+🧩 Conceitos de IA Aplicados
 
 Agent Orchestration
 
 RAG (Retrieval Augmented Generation)
 
-Embeddings semânticos
-
 Tool Calling
 
-Streaming de tokens
+Embeddings
 
-Cache de respostas
+Streaming de LLM
 
-🏁 Resultado
+Cache para redução de custo e latência
 
-Um Agente de IA corporativo, integrado à arquitetura, capaz de:
+📈 Resultado
 
-✔ Entender o domínio do ERP
-✔ Usar base de conhecimento
-✔ Responder em tempo real
-✔ Escalar com performance
+Respostas alinhadas às regras do ERP, com:
 
-📎 Sobre o Projeto
+Menor latência
 
-Este projeto foi desenvolvido como estudo prático de IA aplicada a sistemas corporativos, focando em arquitetura de agentes reais.
+Melhor experiência do usuário
+
+Redução de chamadas repetidas ao modelo
+
+Se quiser, no próximo passo eu deixo isso ainda mais forte pra recrutador (com seção "Diferenciais Técnicos" e "O que esse projeto demonstra sobre mim como desenvolvedor").
