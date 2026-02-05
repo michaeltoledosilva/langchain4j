@@ -1,0 +1,63 @@
+HELP.md
+
+### Build ###
+target/
+build/
+out/
+
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### Logs ###
+*.log
+logs/
+
+### OS Files ###
+.DS_Store
+Thumbs.db
+
+### IDEs ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### ENV / CONFIG (SEGREDOS) ###
+application.properties
+application.yml
+application-*.properties
+application-*.yml
+.env
+.env.*
+
+### Database files locais ###
+*.db
+*.sqlite
+
+### Certificados ###
+*.p12
+*.jks
+*.pem
+*.key
