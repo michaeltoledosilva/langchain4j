@@ -1,4 +1,3 @@
-```markdown
 # 🤖 ERP AI Assistant — LangChain4j + Spring Boot
 
 Este projeto apresenta um assistente inteligente de alta performance integrado ao domínio de um ERP corporativo. A solução demonstra a transição de um simples "chat com LLM" para uma **Arquitetura de Agentes** robusta, segura e contextualizada com regras de negócio.
@@ -103,4 +102,3 @@ openai.model=gpt-4o-mini
 mvn clean install
 mvn spring-boot:run
 
-```
